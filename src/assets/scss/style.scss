@@ -1,0 +1,69 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.con {
+  width: 100vw;
+  height: 100vh;
+  background: lightblue;
+top: 0;
+z-index: 0;
+  position: absolute;
+  
+}
+
+
+
+.screen {
+  width: 100%;
+  height: 100%;
+    background: lightseagreen;
+
+}
+
+a {
+  padding: 1vw;
+
+}
+
+
+
+.bg-intro {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 20%;
+  list-style: none;
+  padding: 0;
+  position: relative;
+  top: 5vh;
+  z-index: 1;
+  
+   
+}
+
+.nav-btn {
+  background: yellow;
+    border-radius: 4vh;
+    
+
+}
