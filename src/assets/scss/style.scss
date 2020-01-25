@@ -13,16 +13,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.con {
+.fullscreen {
+ 
   width: 100vw;
   height: 100vh;
-  top: 0;
-  z-index: 0;
+  display: flex;
+  justify-content: center;
 
-  position: absolute;
 }
 
-.screen {
+.con {
   width: 100%;
   height: 100%;
 }
@@ -41,25 +41,29 @@ body {
 
 
 
-.bg-intro {
+.bg {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
+  background-position-y: bottom;
+  
+  
+  
 }
 
 .nav_bar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 20%;
+width: 30vw;
   list-style: none;
+  padding-top: 3vh;
+  opacity: .6;
+  // margin: 0;
+}
+
+ul {
+  margin: 0;
   padding: 0;
-  position: relative;
-  top: 5vh;
-  z-index: 1;
-  opacity: .8;
 }
 
 .navbtn {
@@ -78,6 +82,13 @@ body {
 
 }
 
+
+
+.header {
+  display: flex; 
+  flex-direction: row;
+}
+
 @font-face {
   font-family: 'CustomFont';
   src: url('../@font-face/0b7d8a39b62b28cf0cfe3cea90b8baa3.eot');
@@ -88,10 +99,49 @@ body {
 .title {
   color: red;
   font-family: 'CustomFont';
-  position: relative;
+  position: absolute;
   z-index: 10;
-  width: 5vh;
+  // width: 5vh;
   font-size: 2rem;
-  left: 5%;
+  left: 0%;
+  border: 2px solid red;
   
+}
+
+.game-view {
+  
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+margin-top: 6vh;
+align-items: center;
+height: 80vh;
+
+}
+
+.quote-win {
+  width: 30vw;
+  height: 45vh;  
+background: black;
+opacity: .5;
+border-radius: 1vw;
+box-shadow: 0vh 0vw 0.6vw white;
+
+}
+
+.choice-btn {
+  width: 8vw;
+  height: 15vh; 
+  background: black;
+opacity: .5;
+border-radius: 1vw;
+box-shadow: 0vh 0vw 0.01vw white;
+color: white;
+outline: none;
+}
+
+.choice-gr {
+  display: flex;
+  justify-content: space-between;
+  width: 30vw;
 }
