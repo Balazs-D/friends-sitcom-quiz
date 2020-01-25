@@ -6,19 +6,36 @@ import Title from './Title'
 import '../assets/scss/style.scss';
 import friends2 from '../assets/photos/friends2';
 import friends1 from '../assets/photos/friends1';
+import Layout from './Layout';
 
 class App extends Component {
+ 
+
+ 
+
   render() {
     return (
       <Router>
         <Navbar />
-        <div className='con'>
-          <div
-            className='bg-intro'
-            style={{ backgroundImage: `url(${friends1})` }}
-          ></div>
-        </div>
+        <Layout />
+
         <Title />
+
+        <Switch>
+          <Route exact path='/about'>
+            <Layout />
+          </Route>
+
+          <Route
+            exact
+            path='/game'
+            
+          >
+            <Layout />
+          </Route>
+
+          <Route exact path='/credits'></Route>
+        </Switch>
       </Router>
     );
   }
