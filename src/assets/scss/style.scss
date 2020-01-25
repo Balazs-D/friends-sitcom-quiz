@@ -16,24 +16,25 @@ body {
 .con {
   width: 100vw;
   height: 100vh;
-  background: lightblue;
-top: 0;
-z-index: 0;
+  top: 0;
+  z-index: 0;
   position: absolute;
-  
 }
-
-
 
 .screen {
   width: 100%;
   height: 100%;
-    background: lightseagreen;
-
 }
 
-a {
+.a-link {
   padding: 1vw;
+  text-decoration: none;
+  color: white !important;
+}
+
+.a-link:hover {
+  text-decoration: none;
+  color: #FCC840 !important;
 
 }
 
@@ -41,13 +42,13 @@ a {
 
 .bg-intro {
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   width: 100%;
   height: 100%;
 }
 
-.nav-bar {
+.nav_bar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -57,13 +58,27 @@ a {
   position: relative;
   top: 5vh;
   z-index: 1;
-  
-   
 }
 
-.nav-btn {
-  background: yellow;
-    border-radius: 4vh;
-    
+.navbtn {
+  background: black;
+  border: 0.5vh solid white; 
+  padding: 1vh;
+  margin: 1vh;
+  border-radius: 4vh;
+  font-family: 'CustomFont';
+  color: white; 
+}
 
+.navbtn:hover {
+    border: 0.5vh solid #37D0FA; 
+    background: #CA342D;
+
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../@font-face/0b7d8a39b62b28cf0cfe3cea90b8baa3.eot');
+  src: url('../@font-face/0b7d8a39b62b28cf0cfe3cea90b8baa3.woff') format('woff');
+ 
 }
