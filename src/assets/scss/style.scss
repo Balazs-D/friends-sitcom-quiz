@@ -18,6 +18,7 @@ body {
   height: 100vh;
   top: 0;
   z-index: 0;
+
   position: absolute;
 }
 
@@ -58,6 +59,7 @@ body {
   position: relative;
   top: 5vh;
   z-index: 1;
+  opacity: .8;
 }
 
 .navbtn {
@@ -81,4 +83,15 @@ body {
   src: url('../@font-face/0b7d8a39b62b28cf0cfe3cea90b8baa3.eot');
   src: url('../@font-face/0b7d8a39b62b28cf0cfe3cea90b8baa3.woff') format('woff');
  
+}
+
+.title {
+  color: red;
+  font-family: 'CustomFont';
+  position: relative;
+  z-index: 10;
+  width: 5vh;
+  font-size: 2rem;
+  left: 5%;
+  
 }

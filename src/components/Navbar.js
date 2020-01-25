@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
+        
       <ul className='nav_bar mx-auto'>
         <li className='navbtn'>
           <Link className='a-link' to='/about'>
