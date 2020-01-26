@@ -16,7 +16,8 @@ export default class Game extends Component {
         className='game-view mx-auto'
         // style={{ backgroundImage: this.state.backgroundImage }}
       >
-        <Quote />
+       <Quote />
+        
         <div className='choice-gr'>
           <button className='choice-btn'>Joey</button>
           <button className='choice-btn'>Fibi</button>
