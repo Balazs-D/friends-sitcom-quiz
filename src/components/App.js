@@ -31,7 +31,7 @@ class App extends Component {
         className='fullscreen bg'
         style={{ backgroundImage: this.state.backgroundImage }}
       >
-        <div>
+        <div className='con'>
           <Router>
             <Navbar />
             <Switch>

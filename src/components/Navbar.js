@@ -13,7 +13,7 @@ export default class Navbar extends Component {
 
 
   render() {
-    return <ul className='nav_bar'>
+    return <ul className='nav_bar mx-auto'>
     
     <li className='navbtn'>
     <NavLink className='a-link' to='/about'>
