@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/scss/style.scss';
 import friends5 from '../assets/photos/friends5.jpg';
+import Quote from './Quote'
 
 export default class Game extends Component {
   state = {
@@ -15,7 +16,7 @@ export default class Game extends Component {
         className='game-view mx-auto'
         // style={{ backgroundImage: this.state.backgroundImage }}
       >
-        <div className='quote-win '></div>
+        <Quote />
         <div className='choice-gr'>
           <button className='choice-btn'>Joey</button>
           <button className='choice-btn'>Fibi</button>
