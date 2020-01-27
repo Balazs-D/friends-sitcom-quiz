@@ -5,7 +5,7 @@ import Title from './Title';
 import Home from './Home';
 import Game from './Game';
 import Credits from './Credits';
-import Quote from './Quote'
+import Quote from './Quote';
 import axios from 'axios';
 
 import '../assets/scss/style.scss';
@@ -14,8 +14,6 @@ import friends2 from '../assets/photos/friends2';
 import friends3 from '../assets/photos/friends3';
 
 class App extends Component {
- 
-
   state = {
     quotes: [],
     backgroundImage: `url(${friends1})`
@@ -26,11 +24,10 @@ class App extends Component {
       'https://friends-quotes-api.herokuapp.com/quotes'
     );
     console.log(res.data);
-    
 
-    const random = Math.floor(Math.random() * Object.keys(res).length);
+    const random = Math.floor(Math.random() * Object.keys(res.data).length);
 
-    this.setState({ quotes: res.data });
+    this.setState({ quotes: res.data[random] });
   }
 
   render() {
@@ -39,6 +36,7 @@ class App extends Component {
         className='fullscreen bg'
         style={{ backgroundImage: this.state.backgroundImage }}
       >
+      
         <div className='con'>
           <Router>
             <Navbar />

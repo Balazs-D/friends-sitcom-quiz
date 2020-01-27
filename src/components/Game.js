@@ -4,6 +4,8 @@ import friends5 from '../assets/photos/friends5.jpg';
 import Quote from './Quote'
 
 export default class Game extends Component {
+
+  
   state = {
     backgroundImage: `url(${friends5})`,
     backgroundSize: 'cover',
@@ -16,8 +18,8 @@ export default class Game extends Component {
         className='game-view mx-auto'
         // style={{ backgroundImage: this.state.backgroundImage }}
       >
-       <Quote />
-        
+        <Quote quotes={this.props.quotes} />
+
         <div className='choice-gr'>
           <button className='choice-btn'>Joey</button>
           <button className='choice-btn'>Fibi</button>

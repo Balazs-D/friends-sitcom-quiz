@@ -8,13 +8,8 @@ export default class Credits extends Component {
   };
 
   render() {
-    return (
-      <div className='con'>
-        <div
-          className='bg-intro'
-          style={{ backgroundImage: this.state.backgroundImage }}
-        ></div>
-      </div>
-    );
+    return <div className='game-view mx-auto'>
+      <div className='popup-win'></div>
+    </div>;
   }
 }

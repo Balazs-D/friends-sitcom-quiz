@@ -46,6 +46,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: bottom;
+  background-position-x: center;
+  background-attachment: fixed;
   
   
   
@@ -125,7 +127,7 @@ height: 80vh;
 
 }
 
-.quote-win {
+.popup-win {
   width: 60vw;
   height: 45vh;  
 background: black;
