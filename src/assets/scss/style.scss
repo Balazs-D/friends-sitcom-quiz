@@ -131,9 +131,19 @@ height: 80vh;
   width: 60vw;
   height: 45vh;  
 background: black;
-opacity: .5;
+opacity: 1;
 border-radius: 1vw;
-box-shadow: 0vh 0vw 0.6vw white;
+box-shadow: 0vh 0vw 0.9vw rgba($color: grey, $alpha: .5);
+color: white;
+font-family: 'CustomFont';
+font-size: 2vw;
+display: flex;
+flex-direction: column;
+align-content: center;
+justify-content: center;
+padding: 3vw;
+text-align: center;
+
 
 
 }

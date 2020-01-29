@@ -9,7 +9,7 @@ export default class Quote extends Component {
   render() {
 
     
-    return <div className='popup-win'>
+    return <div className='popup-win '>
       {this.props.quotes && <p>{this.props.quotes.quote}</p>}
     </div>
   }

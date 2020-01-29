@@ -13,32 +13,30 @@ export default class Navbar extends Component {
 
 
   render() {
-    return <ul className='nav_bar mx-auto'>
-    
-    <li className='navbtn'>
-    <NavLink className='a-link' to='/about'>
-    About
-    </NavLink>
-    </li>
-    
-    <li className='navbtn'>
-    <NavLink
-    className='a-link'
-    to='/game'
-    >
-    Start
-    </NavLink>
-    </li>
-    
-    <li className='navbtn'>
-    <NavLink
-    className='a-link'
-    to='/credits'
-    >
-    Credits
-    </NavLink>
-    </li>
-    
-    </ul>
+    return (
+      <ul className='nav_bar mx-auto'>
+        <li className='navbtn'>
+          <NavLink className='a-link' to='/about'>
+            About
+          </NavLink>
+        </li>
+
+        <li className='navbtn'>
+          <NavLink 
+          className='a-link' 
+          to='/game' 
+          onClick={this.props.getRandomQuote.bind(this)}>
+            Start
+          </NavLink>
+        </li>
+
+        <li className='navbtn'>
+          <NavLink className='a-link' 
+          to='/credits'>
+            Credits
+          </NavLink>
+        </li>
+      </ul>
+    );
 }
 }
