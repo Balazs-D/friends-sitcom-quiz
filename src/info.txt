@@ -14,4 +14,41 @@
 
 Step:
 
--create a
+- fetch Array
+- save array wih its randomised content
+- loop throught with condition
+- count right answers
+- if answer wrong reset the game and send message
+
+
++ Button 
+
+create state array for the buttons and randomize the fill with the follwoing:
+state.character
+ranB1
+ranB2
+
++ nextQuestion
+
+- loop through the quote array 
+- check condition onClick Button(F)
+- without repeat  the quote
+- counter for the progress
+
+
++ OnClick Button
+
+if: clicked button === state.character
+then: Next Question(F)
+
+else: reset game and send message, ask if you want to paly again?
+- if: yes
+- then: fetchArray(F)
+
+-else: go to about
+
+
+START page
+
+fetchArray(F)
+nextQuestion(F)

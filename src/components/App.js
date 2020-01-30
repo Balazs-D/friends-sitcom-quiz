@@ -13,55 +13,52 @@ import friends1 from '../assets/photos/friends1';
 import friends2 from '../assets/photos/friends2';
 import friends3 from '../assets/photos/friends3';
 
-
-
 class App extends Component {
-  
-  constructor(){
+  constructor() {
     super();
     this.state = {
-    quotes: [],
-    backgroundImage: `url(${friends1})`,
-    quote: '',
-    character: '',
+      quotes: '',
+      mixedQuotes: [],
+      backgroundImage: `url(${friends1})`,
+      quote: '',
+      character: ''
+    };
 
-  };
-
-  (this.getRandomQuote = this.getRandomQuote.bind(this));
-  (this.getRandomObject = this.getRandomObject.bind(this));
-
+    // (this.getQuotes = this.getQuotes.bind(this));
   }
 
-
-
   async componentDidMount() {
-    const res = await axios.get(
-      'https://friends-quotes-api.herokuapp.com/quotes'
-    );
-    console.log(res.data);
-
-    const random = Math.floor(Math.random() * Object.keys(res.data).length);
-
-    // this.setState({ quotes: res.data[random] });
   }
 
   // Random quote
-  async getRandomQuote(e) {
 
-
+  getMixedQuotes = async () => {
     const res = await axios.get(
       'https://friends-quotes-api.herokuapp.com/quotes'
     );
-      const random = Math.floor(Math.random() * Object.keys(res.data).length);
+    // console.log(res.data);
 
-      this.setState(quote => ({ quotes: res.data[random] }
-      ))
-      }
+    // const random = Math.floor(Math.random() * Object.keys(res.data).length);
 
-// Random 
-getRandomObject = () => {
-  Math.floor(Math.random() * Object.keys().length);
-}
+    this.setState(quotes => ({ quotes: res.data }));
+    const quotesArray = this.state.quotes
+
+  let randomQuotes = quotesArray
+    .map(a => ({ sort: Math.random(), value: a }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(a => a.value);
+
+    this.setState(mixedQuote => ({ mixedQuotes: randomQuotes}))
+    console.log(randomQuotes)
+    console.log(this.state.mixedQuotes)
+    
+
+  };
+ 
+  // Random
+  getRandomObject = (a) => {
+    Math.floor(Math.random() * Object.keys(a).length);
+  };
 
   render() {
     return (
@@ -71,18 +68,14 @@ getRandomObject = () => {
       >
         <div className='con'>
           <Router>
-            <Navbar getRandomQuote={this.getRandomQuote} />
+            <Navbar getMixedQuotes={this.getMixedQuotes}/>
             <Switch>
               <Route exact path='/'></Route>
               <Route exact path='/about'>
                 <Home />
               </Route>
               <Route exact path='/game'>
-                <Game
-                  quotes={this.state.quotes}
-                  getRandomQuote={this.getRandomQuote}
-                  getRandomObject={this.getRandomObject}
-                />
+                <Game quotes={this.state.quotes} getMixedQuotes={this.getMixedQuotes}/>
               </Route>
               <Route exact path='/credits'>
                 <Credits />

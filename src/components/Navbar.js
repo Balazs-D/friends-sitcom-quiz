@@ -5,13 +5,7 @@ import friends2 from '../assets/photos/friends2';
 import friends1 from '../assets/photos/friends1';
 import Title from './Title';
 
-
-
 export default class Navbar extends Component {
-  
-
-
-
   render() {
     return (
       <ul className='nav_bar mx-auto'>
@@ -22,21 +16,17 @@ export default class Navbar extends Component {
         </li>
 
         <li className='navbtn'>
-          <NavLink 
-          className='a-link' 
-          to='/game' 
-          onClick={this.props.getRandomQuote.bind(this)}>
+          <NavLink className='a-link' to='/game' onClick={this.props.getMixedQuotes}>
             Start
           </NavLink>
         </li>
 
         <li className='navbtn'>
-          <NavLink className='a-link' 
-          to='/credits'>
+          <NavLink className='a-link' to='/credits'>
             Credits
           </NavLink>
         </li>
       </ul>
     );
-}
+  }
 }
