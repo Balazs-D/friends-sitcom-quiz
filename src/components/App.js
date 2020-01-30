@@ -13,14 +13,7 @@ import friends1 from '../assets/photos/friends1';
 import friends2 from '../assets/photos/friends2';
 import friends3 from '../assets/photos/friends3';
 
-const friendsArray = [
-  { name: 'Chandler' }, 
-  { name: 'Rachael' },
-  { name: 'Fibi' },
-  { name: 'Monica' },
-  { name: 'Ross' },
-  { name: 'Joey' }
-];
+
 
 class App extends Component {
   
@@ -60,8 +53,9 @@ class App extends Component {
       'https://friends-quotes-api.herokuapp.com/quotes'
     );
       const random = Math.floor(Math.random() * Object.keys(res.data).length);
+
       this.setState(quote => ({ quotes: res.data[random] }
-        ))
+      ))
       }
 
 // Random 
