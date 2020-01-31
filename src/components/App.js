@@ -28,6 +28,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    this.getMixedQuotes();
   }
 
   // Random quote
@@ -41,22 +42,36 @@ class App extends Component {
     // const random = Math.floor(Math.random() * Object.keys(res.data).length);
 
     this.setState(quotes => ({ quotes: res.data }));
-    const quotesArray = this.state.quotes
 
-  let randomQuotes = quotesArray
-    .map(a => ({ sort: Math.random(), value: a }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(a => a.value);
+     let randomQuotes = res.data
+       .map(a => ({ sort: Math.random(), value: a }))
+       .sort((a, b) => a.sort - b.sort)
+       .map(a => a.value);
 
-    this.setState(mixedQuote => ({ mixedQuotes: randomQuotes}))
-    console.log(randomQuotes)
-    console.log(this.state.mixedQuotes)
+     this.setState(mixedQuotes => ({
+       mixedQuotes: randomQuotes
+     }));
+     console.log(randomQuotes);
+     console.log(this.state.mixedQuotes);
+  };
+
+  // randomizeArray = () => {
     
 
-  };
- 
+  //   let randomQuotes = quotesArray
+  //     .map(a => ({ sort: Math.random(), value: a }))
+  //     .sort((a, b) => a.sort - b.sort)
+  //     .map(a => a.value);
+
+  //   this.setState(mixedQuotes => ({
+  //     mixedQuotes: randomQuotes
+  //   }));
+  //   console.log(randomQuotes);
+  //   console.log(this.state.mixedQuotes);
+  // };
+
   // Random
-  getRandomObject = (a) => {
+  getRandomObject = a => {
     Math.floor(Math.random() * Object.keys(a).length);
   };
 
@@ -68,14 +83,17 @@ class App extends Component {
       >
         <div className='con'>
           <Router>
-            <Navbar getMixedQuotes={this.getMixedQuotes}/>
+            <Navbar getMixedQuotes={this.getMixedQuotes} randomizeArray={this.randomizeArray}/>
             <Switch>
               <Route exact path='/'></Route>
               <Route exact path='/about'>
                 <Home />
               </Route>
               <Route exact path='/game'>
-                <Game quotes={this.state.quotes} getMixedQuotes={this.getMixedQuotes}/>
+                <Game
+                  quotes={this.state.quotes}
+                  mixedQuotes={this.state.mixedQuotes}
+                />
               </Route>
               <Route exact path='/credits'>
                 <Credits />

@@ -16,7 +16,7 @@ export default class Navbar extends Component {
         </li>
 
         <li className='navbtn'>
-          <NavLink className='a-link' to='/game' onClick={this.props.getMixedQuotes}>
+          <NavLink className='a-link' to='/game' onClick={this.props.getMixedQuotes} >
             Start
           </NavLink>
         </li>

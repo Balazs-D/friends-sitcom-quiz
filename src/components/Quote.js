@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
+import { isTemplateElement } from '@babel/types';
 
 
 
 export default class Quote extends Component {
-  constructor(props){
-    super(props);
-    this.state = {}
-  }
+ constructor(props){
+   super(props);
+   this.state = {
+     
+   }
+ }
 
 
   render() {
 
+    // let mappedQuotes = this.props.mixedQuotes.map((item, index) => (
+    //   <p key={index}>{item.charcter}</p>
+    // ));
+
     
-    return <div className='popup-win '>
-    {this.props.quotes && <p>{this.props.mixedQuotes}</p>}
-      {/* {this.props.quotes && <p>{this.props.quotes.quote}</p>} */}
-    </div>
-  }
+    return (
+      <div className='popup-win '>
+
+{this.props.mixedQuotes && <p>{this.props.mixedQuotes.quote}</p>}
+
+              </div>
+    );
+
 
  
-}
+}};
 
 
-  
-    // {this.props.quote.map(quote => <p> quote={quote}></p>)}
-  
+
+// {
+//   this.props.mixedQuotes.map((item, index) => (
+//     <p key={index}>{item.character}</p>
+//   ));
+// }
