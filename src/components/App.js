@@ -93,6 +93,7 @@ class App extends Component {
                 <Game
                   quotes={this.state.quotes}
                   mixedQuotes={this.state.mixedQuotes}
+                  getMixedQuotes={this.getMixedQuotes}
                 />
               </Route>
               <Route exact path='/credits'>

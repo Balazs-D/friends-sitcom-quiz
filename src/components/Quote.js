@@ -12,25 +12,28 @@ export default class Quote extends Component {
  }
 
 
+
+
   render() {
 
-    // let mappedQuotes = this.props.mixedQuotes.map((item, index) => (
-    //   <p key={index}>{item.charcter}</p>
-    // ));
 
+   
+ 
     
     return (
       <div className='popup-win '>
-
-{this.props.mixedQuotes && <p>{this.props.mixedQuotes.quote}</p>}
-
-              </div>
+       {this.props.mixedQuotes && this.props.solvedAllQuotes ? <p>{this.props.mixedQuotes.quote}</p> : <p>You Won!!!</p>}
+      </div>
     );
 
 
  
 }};
 
+
+//  {
+// {this.props.mixedQuotes && <p>{this.props.mixedQuotes.quote}</p>}
+// } 
 
 
 // {

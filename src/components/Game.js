@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import '../assets/scss/style.scss';
 import Quote from './Quote';
+import Restart from './Restart' 
+import ChoiceButtons from './ChoiceButtons'
+import { thisExpression } from '@babel/types';
 
 export default class Game extends Component {
   constructor(props) {
@@ -8,33 +11,54 @@ export default class Game extends Component {
 
     this.state = {
       friendsArray: ['Chandler', 'Rachel', 'Phoebe', 'Monica', 'Ross', 'Joey'],
+      buttonOne: '',
       buttonTwo: 'Monica!',
       buttonThree: 'Chandler!',
       character: '',
       characterMatch: false,
       mixedQuotes: [],
       counter: 0,
+      solvedAllQuotes: false
     };
+
+
   }
 
-  
+componentDidMount() {
+    this.setState(solvedAllQuotes => ({
+      solvedAllQuotes: true
+    }));
+  }
+
+
+
+
   // const randomizer = Math.floor(Math.random() * Object.keys(this.state.friendsArray).length)
 
   printTest = () => {
+    // const mappedQuotes = this.props.mixedQuotes.map((item, index) => (
+    //           <p key={index}>{item}</p>
+    //         ))
 
-// const mappedQuotes = this.props.mixedQuotes.map((item, index) => (
-//           <p key={index}>{item}</p>
-//         ))
+    //         console.group(mappedQuotes);
 
-//         console.group(mappedQuotes);
-    
     console.log(this.props.mixedQuotes[this.counter]);
   };
 
-  quoteCounter = (e) => {
-    this.setState(({counter: this.state.counter + 1}));
-    console.log(this.state.counter)
-    };
+  quoteCounter = e => {
+    // console.log(this.state.counter);
+    // console.log(this.props.mixedQuotes[this.counter]);
+    this.state.counter === 19
+      ? this.setState({ counter: 0, solvedAllQuotes: true })
+      : this.setState({
+          counter: this.state.counter + 1,
+          solvedAllQuotes: true
+        });
+  };
+
+  restartGame = () => {
+    this.setState(counter => ({counter: 0}))
+  }
 
   // 1. Click on button if character != then restart + button style red / else: next quote + button style green
 
@@ -52,22 +76,30 @@ export default class Game extends Component {
       >
         <Quote
           quotes={this.props.quotes}
+          counter={this.state.counter}
           mixedQuotes={this.props.mixedQuotes[this.state.counter]}
+          quoteCounter={this.state.quoteCounter}
+          solvedAllQuotes={this.state.solvedAllQuotes}
         />
 
-        <div className='choice-gr'>
-          <button className='choice-btn'>
-            <p>{this.state.buttonOne}</p>
-          </button>
-
-          <button className='choice-btn' onClick={this.quoteCounter}>
-            <p>{this.state.buttonTwo}</p>
-          </button>
-
-          <button className='choice-btn'>
-            <p>{this.state.buttonThree}</p>
-          </button>
-        </div>
+        {this.state.counter === 18 ? (
+          <Restart
+            getMixedQuotes={this.props.getMixedQuotes}
+            quoteCounter={this.quoteCounter}
+            counter={this.state.counter}
+            solvedAllQuotes={this.state.solvedAllQuotes}
+            restartGame={this.restartGame}
+          />
+        ) : (
+          <ChoiceButtons
+            printTest={this.state.printTest}
+            quoteCounter={this.quoteCounter}
+            buttonOne={this.state.buttonOne}
+            buttonTwo={this.state.buttonTwo}
+            buttonThree={this.state.buttonThree}
+            getMixedQuotes={this.getMixedQuotes}
+          />
+        )}
       </div>
     );
   }
