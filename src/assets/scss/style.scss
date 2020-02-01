@@ -164,3 +164,39 @@ outline: none;
   justify-content: space-between;
   width: 30vw;
 }
+
+
+
+// TIMER
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+}
+
+#visual-timer {
+    background-color: #004d00;
+    width: 100vw;
+    margin: 0 50px;
+    height: 2vh;
+}
+
+.height-change {
+    /* Animation code */
+    
+    animation-name: heightChange;
+    animation-duration: 5s;
+}
+
+
+/* Standard syntax */
+@keyframes heightChange {
+    0%   {width: 100vh;}
+    25%  {width: 75vh;}
+    50%  {width: 50vh;}
+    75%  {width: 25vh;}
+    100% {width: 0vh;}
+}
+
+
+

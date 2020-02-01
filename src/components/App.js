@@ -39,7 +39,6 @@ class App extends Component {
     );
     // console.log(res.data);
 
-    // const random = Math.floor(Math.random() * Object.keys(res.data).length);
 
     this.setState(quotes => ({ quotes: res.data }));
 

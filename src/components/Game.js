@@ -1,36 +1,26 @@
 import React, { Component } from 'react';
 import '../assets/scss/style.scss';
 import Quote from './Quote';
-import Restart from './Restart' 
-import ChoiceButtons from './ChoiceButtons'
-import { thisExpression } from '@babel/types';
+import Restart from './Restart';
+import Timer from './Timer';
+import ChoiceButtons from './ChoiceButtons';
 
 export default class Game extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      friendsArray: ['Chandler', 'Rachel', 'Phoebe', 'Monica', 'Ross', 'Joey'],
-      buttonOne: '',
-      buttonTwo: 'Monica!',
-      buttonThree: 'Chandler!',
-      character: '',
-      characterMatch: false,
       mixedQuotes: [],
       counter: 0,
       solvedAllQuotes: false
     };
-
-
   }
 
-componentDidMount() {
+  componentDidMount() {
     this.setState(solvedAllQuotes => ({
       solvedAllQuotes: true
     }));
   }
-
-
 
 
   // const randomizer = Math.floor(Math.random() * Object.keys(this.state.friendsArray).length)
@@ -57,8 +47,8 @@ componentDidMount() {
   };
 
   restartGame = () => {
-    this.setState(counter => ({counter: 0}))
-  }
+    this.setState(counter => ({ counter: 0 }));
+  };
 
   // 1. Click on button if character != then restart + button style red / else: next quote + button style green
 
@@ -81,6 +71,7 @@ componentDidMount() {
           quoteCounter={this.state.quoteCounter}
           solvedAllQuotes={this.state.solvedAllQuotes}
         />
+        <Timer />
 
         {this.state.counter === 18 ? (
           <Restart
@@ -94,9 +85,7 @@ componentDidMount() {
           <ChoiceButtons
             printTest={this.state.printTest}
             quoteCounter={this.quoteCounter}
-            buttonOne={this.state.buttonOne}
-            buttonTwo={this.state.buttonTwo}
-            buttonThree={this.state.buttonThree}
+            mixedQuotes={this.props.mixedQuotes[this.state.counter]}
             getMixedQuotes={this.getMixedQuotes}
           />
         )}
