@@ -23,10 +23,11 @@ export default class Restart extends Component {
 
     render() {
 
+      const {remixRestart } = this.state
 
         return (
           <div>
-            <button className='navbtn' onClick={this.remixRestart}>Restart</button>
+            <button className='navbtn' onClick={remixRestart}>Restart</button>
           </div>
         );
     }

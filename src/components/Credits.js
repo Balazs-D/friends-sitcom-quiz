@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/scss/style.scss';
 import friends3 from '../assets/photos/friends3';
+import Loader from './Loader'
 
 export default class Credits extends Component {
   state = {
@@ -8,8 +9,12 @@ export default class Credits extends Component {
   };
 
   render() {
-    return <div className='game-view mx-auto'>
-      <div className='popup-win'></div>
-    </div>;
+    return (
+      <div className='game-view mx-auto'>
+        <div className='popup-win'>
+          <Loader />
+        </div>
+      </div>
+    );
   }
 }

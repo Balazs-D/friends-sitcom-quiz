@@ -10,8 +10,7 @@ import axios from 'axios';
 
 import '../assets/scss/style.scss';
 import friends1 from '../assets/photos/friends1';
-import friends2 from '../assets/photos/friends2';
-import friends3 from '../assets/photos/friends3';
+
 
 class App extends Component {
   constructor() {
@@ -21,10 +20,10 @@ class App extends Component {
       mixedQuotes: [],
       backgroundImage: `url(${friends1})`,
       quote: '',
-      character: ''
+      character: '',
+      loading: false
     };
 
-    // (this.getQuotes = this.getQuotes.bind(this));
   }
 
   async componentDidMount() {
@@ -34,6 +33,7 @@ class App extends Component {
   // Random quote
 
   getMixedQuotes = async () => {
+     this.setState( loading => ({loading: true}))
     const res = await axios.get(
       'https://friends-quotes-api.herokuapp.com/quotes'
     );
@@ -42,7 +42,7 @@ class App extends Component {
 
     this.setState(quotes => ({ quotes: res.data }));
 
-     let randomQuotes = res.data
+     let randomQuotes = await res.data
        .map(a => ({ sort: Math.random(), value: a }))
        .sort((a, b) => a.sort - b.sort)
        .map(a => a.value);
@@ -50,39 +50,27 @@ class App extends Component {
      this.setState(mixedQuotes => ({
        mixedQuotes: randomQuotes
      }));
+     this.setState(loader => ({loader: false}))
      console.log(randomQuotes);
      console.log(this.state.mixedQuotes);
+     this.setState( loading => ({ loading: false }));
+
   };
 
-  // randomizeArray = () => {
-    
 
-  //   let randomQuotes = quotesArray
-  //     .map(a => ({ sort: Math.random(), value: a }))
-  //     .sort((a, b) => a.sort - b.sort)
-  //     .map(a => a.value);
 
-  //   this.setState(mixedQuotes => ({
-  //     mixedQuotes: randomQuotes
-  //   }));
-  //   console.log(randomQuotes);
-  //   console.log(this.state.mixedQuotes);
-  // };
-
-  // Random
-  getRandomObject = a => {
-    Math.floor(Math.random() * Object.keys(a).length);
-  };
 
   render() {
+
+    const {backgroundImage, getMixedQuotes, quotes , mixedQuotes, loader, randomizeArray} = this.state
     return (
       <div
         className='fullscreen bg'
-        style={{ backgroundImage: this.state.backgroundImage }}
+        style={{ backgroundImage: backgroundImage }}
       >
         <div className='con'>
           <Router>
-            <Navbar getMixedQuotes={this.getMixedQuotes} randomizeArray={this.randomizeArray}/>
+            <Navbar getMixedQuotes={getMixedQuotes} randomizeArray={randomizeArray}/>
             <Switch>
               <Route exact path='/'></Route>
               <Route exact path='/about'>
@@ -90,9 +78,10 @@ class App extends Component {
               </Route>
               <Route exact path='/game'>
                 <Game
-                  quotes={this.state.quotes}
-                  mixedQuotes={this.state.mixedQuotes}
-                  getMixedQuotes={this.getMixedQuotes}
+                  quotes={quotes}
+                  mixedQuotes={mixedQuotes}
+                  getMixedQuotes={getMixedQuotes}
+                  loader={loader}
                 />
               </Route>
               <Route exact path='/credits'>

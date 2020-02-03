@@ -11,7 +11,7 @@ export default class ChoiceButtons extends Component {
       buttonTwo: '',
       buttonThree: '',
       character: '',
-      characterMatch: false
+      characterMatch: true
     };
   }
 
@@ -49,10 +49,20 @@ export default class ChoiceButtons extends Component {
     console.log(btOne, btTwo, btThree, searchingOne, searchingTwo)
   };
 
-  nextQuote=async()=>{
+  
 
-await this.props.quoteCounter();
-await this.mixSelection();
+  nextQuote=async(e)=>{
+
+// if
+// (
+  // this.props.mixedQuotes.character
+//    === 'monica'){
+    await this.props.quoteCounter();
+    await this.mixSelection();
+   
+// }else{
+//   this.setState({characterMatch: false})
+// }
   }
 
   render() {

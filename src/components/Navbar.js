@@ -6,7 +6,13 @@ import friends1 from '../assets/photos/friends1';
 import Title from './Title';
 
 export default class Navbar extends Component {
+
+
   render() {
+
+
+      const { getMixedQuotes } = this.props;
+
     return (
       <ul className='nav_bar mx-auto'>
         <li className='navbtn'>
@@ -16,7 +22,7 @@ export default class Navbar extends Component {
         </li>
 
         <li className='navbtn'>
-          <NavLink className='a-link' to='/game' onClick={this.props.getMixedQuotes} >
+          <NavLink className='a-link' to='/game' onClick={getMixedQuotes} >
             Start
           </NavLink>
         </li>

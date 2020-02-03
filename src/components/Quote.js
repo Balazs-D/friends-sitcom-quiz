@@ -22,7 +22,8 @@ export default class Quote extends Component {
     
     return (
       <div className='popup-win '>
-       {this.props.mixedQuotes && this.props.solvedAllQuotes ? <p>{this.props.mixedQuotes.quote}</p> : <p>You Won!!!</p>}
+      
+      {this.props.mixedQuotes && this.props.solvedAllQuotes ? <p>{this.props.mixedQuotes.quote}</p> : <p>You Won!!!</p>}
       </div>
     );
 
