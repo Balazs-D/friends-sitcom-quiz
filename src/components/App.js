@@ -33,7 +33,7 @@ class App extends Component {
   // Random quote
 
   getMixedQuotes = async () => {
-     this.setState( loading => ({loading: true}))
+    await this.setState( loading => ({loading: true}))
     const res = await axios.get(
       'https://friends-quotes-api.herokuapp.com/quotes'
     );
@@ -62,7 +62,8 @@ class App extends Component {
 
   render() {
 
-    const {backgroundImage, getMixedQuotes, quotes , mixedQuotes, loader, randomizeArray} = this.state
+    const {backgroundImage, quotes , mixedQuotes, loader} = this.state;
+
     return (
       <div
         className='fullscreen bg'
@@ -70,7 +71,7 @@ class App extends Component {
       >
         <div className='con'>
           <Router>
-            <Navbar getMixedQuotes={getMixedQuotes} randomizeArray={randomizeArray}/>
+            <Navbar getMixedQuotes={this.getMixedQuotes} />
             <Switch>
               <Route exact path='/'></Route>
               <Route exact path='/about'>
@@ -80,7 +81,7 @@ class App extends Component {
                 <Game
                   quotes={quotes}
                   mixedQuotes={mixedQuotes}
-                  getMixedQuotes={getMixedQuotes}
+                  getMixedQuotes={this.getMixedQuotes}
                   loader={loader}
                 />
               </Route>

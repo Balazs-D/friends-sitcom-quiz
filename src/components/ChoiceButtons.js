@@ -11,73 +11,88 @@ export default class ChoiceButtons extends Component {
       buttonTwo: '',
       buttonThree: '',
       character: '',
-      characterMatch: true
+      characterMatch: true,
+      buttonValue: ''
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.nextQuote();
   }
 
-  soloSelection=()=>{
-    const soloSel = Math.floor(Math.random() * this.state.friendsArray.length);
-    return soloSel
-  }
 
-  mixSelection = async () => {
-    const searchingOne = await this.soloSelection();
-    const searchingTwo = await this.soloSelection();
-    
+
+  soloSelection = () => {
+    const soloSel = Math.floor(Math.random() * this.state.friendsArray.length);
+    return soloSel;
+  };
+
+  mixSelection = async (e) => {
+    let searchingOne = await this.soloSelection();
+    let searchingTwo = await this.soloSelection();
+
     let btThree = this.props.mixedQuotes.character;
     let btOne = this.state.friendsArray[searchingOne];
     let btTwo = this.state.friendsArray[searchingTwo];
 
-    do{
-      const searchingOne = await this.soloSelection();
-      const searchingTwo = await this.soloSelection();
+    do {
+      let searchingOne = await this.soloSelection();
+      let searchingTwo = await this.soloSelection();
       btOne = this.state.friendsArray[searchingOne];
-      btTwo = this.state.friendsArray[searchingTwo]
-    }
-    while(btTwo === btThree || btTwo === btOne || btOne === btThree )
-    
+      btTwo = this.state.friendsArray[searchingTwo];
+    } while (btTwo === btThree || btTwo === btOne || btOne === btThree);
+
     await this.setState({
       buttonOne: btOne,
       buttonTwo: btTwo,
       buttonThree: btThree
     });
-    
-    console.log(btOne, btTwo, btThree, searchingOne, searchingTwo)
+
+    console.log(btOne, btTwo, btThree, searchingOne, searchingTwo);
   };
 
-  
+  nextQuote = async e => {
+        await this.mixSelection();
 
-  nextQuote=async(e)=>{
-
-// if
-// (
-  // this.props.mixedQuotes.character
-//    === 'monica'){
     await this.props.quoteCounter();
-    await this.mixSelection();
    
-// }else{
-//   this.setState({characterMatch: false})
-// }
-  }
+    
+  };
+
+  checkAndDo = async e => {
+    this.props.mixedQuotes.character === e.target.value
+      ? this.nextQuote()
+      : this.setState(characterMatch => ({ characterMatch: false }));
+
+    console.log(e.target.value);
+  };
 
   render() {
+    const { buttonOne, buttonTwo, buttonThree, value } = this.state;
     return (
       <div className='choice-gr'>
-        <button className='choice-btn' onClick={this.props.printTest}>
-          <p>{this.state.buttonOne}</p>
+        <button
+          className='choice-btn'
+          onClick={this.checkAndDo}
+          value={buttonOne}
+        >
+          <p>{buttonOne}</p>
         </button>
 
-        <button className='choice-btn' onClick={this.nextQuote}>
-          <p>{this.state.buttonTwo}</p>
+        <button
+          className='choice-btn'
+          onClick={this.checkAndDo}
+          value={buttonTwo}
+        >
+          <p>{buttonTwo}</p>
         </button>
 
-        <button className='choice-btn'>
-          <p>{this.state.buttonThree}</p>
+        <button
+          className='choice-btn'
+          value={buttonThree}
+          onClick={this.checkAndDo}
+        >
+          <p>{buttonThree}</p>
         </button>
       </div>
     );
