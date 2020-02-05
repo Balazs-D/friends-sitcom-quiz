@@ -13,9 +13,9 @@ export default class Game extends Component {
 
     this.state = {
       
-      counter: 0,
-      solvedAllQuotes: false,
-      characterMatch: true
+      // counter: 0,
+      // solvedAllQuotes: false,
+      // characterMatch: true
     };
   }
 

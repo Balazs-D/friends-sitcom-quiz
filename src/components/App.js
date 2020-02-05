@@ -9,19 +9,18 @@ import Quote from './Quote';
 import axios from 'axios';
 
 import '../assets/scss/style.scss';
-import friends1 from '../assets/photos/friends1';
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      quotes: '',
-      mixedQuotes: [],
-      backgroundImage: `url(${friends1})`,
-      quote: '',
-      character: '',
-      loading: false
+      // quotes: '',
+      // mixedQuotes: [],
+      // backgroundImage: `url(${friends1})`,
+      // quote: '',
+      // character: '',
+      // loading: false
     };
 
   }
