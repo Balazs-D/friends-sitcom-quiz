@@ -24,35 +24,35 @@ class App extends Component {
     };
 
   }
-
+// change too useEffect -> on Game page
   async componentDidMount() {
     this.getMixedQuotes();
   }
 
   // Random quote
 
-  getMixedQuotes = async () => {
-    await this.setState( loading => ({loading: true}))
-    const res = await axios.get(
-      'https://friends-quotes-api.herokuapp.com/quotes'
-    );
+  // getMixedQuotes = async () => {
+  //   await this.setState( loading => ({loading: true}))
+  //   const res = await axios.get(
+  //     'https://friends-quotes-api.herokuapp.com/quotes'
+  //   );
     // console.log(res.data);
 
 
-    this.setState(quotes => ({ quotes: res.data }));
+    // this.setState(quotes => ({ quotes: res.data }));
 
-     let randomQuotes = await res.data
-       .map(a => ({ sort: Math.random(), value: a }))
-       .sort((a, b) => a.sort - b.sort)
-       .map(a => a.value);
+    //  let randomQuotes = await res.data
+    //    .map(a => ({ sort: Math.random(), value: a }))
+    //    .sort((a, b) => a.sort - b.sort)
+    //    .map(a => a.value);
 
-     this.setState(mixedQuotes => ({
-       mixedQuotes: randomQuotes
-     }));
-     this.setState(loader => ({loader: false}))
-     console.log(randomQuotes);
-     console.log(this.state.mixedQuotes);
-     this.setState( loading => ({ loading: false }));
+    //  this.setState(mixedQuotes => ({
+    //    mixedQuotes: randomQuotes
+    //  }));
+    //  this.setState(loader => ({loader: false}))
+    //  console.log(randomQuotes);
+    //  console.log(this.state.mixedQuotes);
+    //  this.setState( loading => ({ loading: false }));
 
   };
 

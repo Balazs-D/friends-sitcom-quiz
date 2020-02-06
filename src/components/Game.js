@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import '../assets/scss/style.scss';
 import Quote from './Quote';
 import Restart from './Restart';
@@ -7,17 +7,11 @@ import GameOver from './GameOver';
 import Loader from './Loader';
 import ChoiceButtons from './ChoiceButtons';
 
-export default class Game extends Component {
-  constructor(props) {
-    super(props);
+const Game = () => {
 
-    this.state = {
-      
-      // counter: 0,
-      // solvedAllQuotes: false,
-      // characterMatch: true
-    };
-  }
+  const quoteContext = useContext(quoteContext);
+  const {counter, solvedAllQuotes, characterMatch} = quoteContext
+ 
 
   async componentDidMount(){
     await this.props.getMixedQuotes()
@@ -26,18 +20,7 @@ export default class Game extends Component {
     }));
   }
 
-  // const randomizer = Math.floor(Math.random() * Object.keys(this.state.friendsArray).length)
 
-  printTest = e => {
-    // const mappedQuotes = this.props.mixedQuotes.map((item, index) => (
-    //           <p key={index}>{item}</p>
-    //         ))
-
-    //         console.group(mappedQuotes);
-
-    console.log(this.props.mixedQuotes[this.counter]);
-    console.log(e.target.id);
-  };
 
   quoteCounter = e => {
     // console.log(this.state.counter);
