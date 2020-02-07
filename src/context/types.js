@@ -1,0 +1,7 @@
+export const GET_MIXED_QUOTES = 'GET_MIXED_QUOTES';
+export const QUOTE_COUNTER = 'QUOTE_COUNTER';
+export const SOLO_SELECTION = 'SOLO_SELECTION';
+export const MIX_ELECTION = 'MIX_SELECTION';
+export const NEXT_QUOTE = 'NEXT_QUOTE';
+export const CHECK_AND_DO = 'CHECK_AND_DO';
+export const SET_LOADING = 'SET_LOADING'
