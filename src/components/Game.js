@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import '../assets/scss/style.scss';
 import Quote from './Quote';
 import Restart from './Restart';
@@ -10,19 +10,18 @@ import FriendsContext from '../context/friendsContext'
 
 
 
-const Game = ({  quotes, mixedQuotes })=> {
+const Game = ()=> {
   const friendsContext = useContext(FriendsContext);
-  const [ counter, setCounter ] = useState(0);
-  const [ solvedAllQuotes, setSolvedAllQuotes ] = useState(false);
-  const [ characterMatch, setCharacterMatch ] = useState(true);
+  
   
  
 
 useEffect(() => { 
-  async function Init(){
-    await friendsContext.getMixedQuotes();
-    await setSolvedAllQuotes(true);
+   function Init(){
+     friendsContext.getMixedQuotes();
+    // await setSolvedAllQuotes(true);
     //eslint-disable-next-line
+    console.log('its alive!!!!')
   }
  
 }, []);
@@ -30,26 +29,25 @@ useEffect(() => {
     
   
 
-  // const randomizer = Math.floor(Math.random() * Object.keys(this.state.friendsArray).length)
 
   
 // onClick button 
-  const quoteCounter = e => {
+  // const quoteCounter = e => {
 
 
-    const resetCounter = (e) => {
-      setCounter(0);
-      setSolvedAllQuotes(true)
-    }
+  //   const resetCounter = (e) => {
+  //     setCounter(0);
+  //     setSolvedAllQuotes(true)
+  //   }
 
-    const nextQuote = (e) => {
-      setCounter(prevState => {
-          return {counter: prevState.counter + 1}
-    });
+  //   const nextQuote = (e) => {
+  //     setCounter(prevState => {
+  //         return {counter: prevState.counter + 1}
+  //   });
 
 
-    counter === 18 ? resetCounter() : nextQuote();
-  }};
+  //   counter === 18 ? resetCounter() : nextQuote();
+  // }};
 
   
 
@@ -116,33 +114,17 @@ useEffect(() => {
         className='game-view mx-auto'
         // style={{ backgroundImage: this.state.backgroundImage }}
       >
-        {characterMatch === true ? (
-          <Quote
-            quotes={quotes}
-            counter={counter}
-            mixedQuotes={mixedQuotes[counter]}
-            quoteCounter={quoteCounter}
-            solvedAllQuotes={solvedAllQuotes}
-          />
+        {friendsContext.characterMatch === true ? (
+          <Quote />
         ) : (
           <GameOver />
         )}
         <Timer />
 
-        {counter === 18 ? (
-          <Restart
-           
-            quoteCounter={quoteCounter}
-            counter={counter}
-            solvedAllQuotes={solvedAllQuotes}
-            // resetCounter={resetCounter}
-          />
+        {friendsContext.counter === 18 ? (
+          <Restart />
         ) : (
-          <ChoiceButtons
-            quoteCounter={quoteCounter}
-            mixedQuotes={mixedQuotes[counter]}
-            
-          />
+          <ChoiceButtons />
         )}
       </div>
     );

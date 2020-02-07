@@ -15,6 +15,7 @@ import friends1 from '../assets/photos/friends1';
 import FriendsContext from '../context/friendsContext'
 
 
+
 const App = () => {
    const friendsContext = useContext(FriendsContext);
 
@@ -34,9 +35,9 @@ const App = () => {
 
   
 
-  useEffect(() =>  {
-    FriendsContext.getMixedQuotes();
-  }, []);
+  // useEffect(() =>  {
+  //   friendsContext.getMixedQuotes();
+  // }, []);
 
   // Random quote
 
@@ -98,7 +99,3 @@ const App = () => {
 
 export default App;
 
-App.propTypes= {
-  getMixedQuotes: PropTypes.func.isRequired,
-
-}
