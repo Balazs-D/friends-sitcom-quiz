@@ -10,6 +10,7 @@ import {
   SOLO_SELECTION,
   MIX_ELECTION,
   NEXT_QUOTE,
+  RESTART,
   CHECK_AND_DO,
   SET_LOADING,
   RESET_COUNTER,
@@ -17,26 +18,29 @@ import {
   BUTTON_TEXT_TWO,
   BUTTON_TEXT_THREE,
   ALL_QUOTES_SOLVED,
-  NEXT_QUOTE_UPDATE_COUNTER
+  NEXT_QUOTE_UPDATE_COUNTER,
+  NEXT_CHARACTER,
+  FILL_BUTTONS,
 } from './types';
 import friendsContext from './friendsContext';
 
 const FriendsState = props => {
   const initialState = {
-    CurrentQuote: '',
+    currentQuote: '',
     quotes: '',
     mixedQuotes: [],
     backgroundImage: `url(${friends1})`,
-    character: '',
+    currentCharacter: '',
     loading: false,
     counter: 0,
     solvedAllQuotes: true,
     characterMatch: true,
     restarted: false,
     friendsArray: ['Chandler', 'Rachel', 'Phoebe', 'Monica', 'Ross', 'Joey'],
-    buttonOne: 'BOBBY',
+    buttonOne: '',
     buttonTwo: '',
-    buttonThree: ''
+    buttonThree: '',
+    buttonArray: [],
   };
 
   const [state, dispatch] = useReducer(FriendsReducer, initialState);
@@ -65,7 +69,12 @@ const FriendsState = props => {
       payload: randomQuotes
     });
 
-    console.log('getMixedQuotes Function');
+    console.log('GET MIXED QUOTES', state.currentQuote);
+    await mixSelection();
+    
+    dispatch({ type: NEXT_QUOTE });
+
+
   };
 
   //   QUOTE_COUNTER,
@@ -83,39 +92,28 @@ const FriendsState = props => {
   const mixSelection = async e => {
     let searchingOne = await soloSelection();
     let searchingTwo = await soloSelection();
-    let btThree = 'Ross';
+    const btThree = state.currentCharacter;
 
     let btOne = state.friendsArray[searchingOne];
     let btTwo = state.friendsArray[searchingTwo];
 
     do {
-      let searchingOne = await soloSelection();
-      let searchingTwo = await soloSelection();
+      searchingOne = await soloSelection();
+      searchingTwo = await soloSelection();
       btOne = state.friendsArray[searchingOne];
       btTwo = state.friendsArray[searchingTwo];
     } while (btTwo === btThree || btTwo === btOne || btOne === btThree);
+  
+    console.log('B1:', btOne, 'B2:', btTwo, 'B3:', state.currentCharacter, state.counter);
+    
+    let btArray = [btOne, btTwo]
+    dispatch({ 
+      type: FILL_BUTTONS,
+      payload: btArray
+    });
 
-    await buttonTextOne(btOne);
-    await buttonTextTwo(btTwo);
-    await buttonTextThree(btThree);
-
-    dispatch(
-      {
-        type: BUTTON_TEXT_ONE,
-        payload: btOne
-      },
-      {
-        type: BUTTON_TEXT_TWO,
-        payload: btTwo
-      },
-      {
-        type: BUTTON_TEXT_THREE,
-        payload: btThree
-      }
-    );
-
-    console.log(btOne, btTwo, btThree, searchingOne, searchingTwo);
-    console.log(state.friendsArray);
+    console.log(state.buttonArray)
+     
   };
   //   NEXT_QUOTE,
   const nextQuote = async e => {
@@ -127,8 +125,13 @@ const FriendsState = props => {
       resetCounter();
     }
 
-    console.log(state.CurrentQuote);
+    console.log(state.currentQuote);
   };
+
+  const restart = () => {
+    resetCounter();
+    getMixedQuotes();
+  }
 
   //   CHECK_AND_DO;
 
@@ -142,14 +145,17 @@ const FriendsState = props => {
   const resetCounter = () => dispatch({ type: RESET_COUNTER });
 
   // NEXT_QUOTE_UPDATE_COUNTER
-  const nextQuoteUpdateCounter = () =>
-    dispatch({ type: NEXT_QUOTE_UPDATE_COUNTER });
+  const nextQuoteUpdateCounter = () => {
+    if (state.counter === 17) {
+      resetCounter();
+    } else {
+      dispatch({ type: NEXT_QUOTE_UPDATE_COUNTER });
+    }
+  };
 
   // BUTTON_ONE / BUTTON_TWO / BUTTON_THREE
 
-  const buttonTextOne = () => dispatch({ type: BUTTON_TEXT_ONE });
-  const buttonTextTwo = () => dispatch({ type: BUTTON_TEXT_TWO });
-  const buttonTextThree = () => dispatch({ type: BUTTON_TEXT_THREE });
+ 
 
   return (
     <FriendsContext.Provider
@@ -158,7 +164,7 @@ const FriendsState = props => {
         quotes: state.quotes,
         mixedQuotes: state.mixedQuotes,
         backgroundImage: state.backgroundImage,
-        character: state.character,
+        currentCharacter: state.currentCharacter,
         loading: state.loading,
         counter: state.counter,
         solvedAllQuotes: state.solvedAllQuotes,
@@ -172,13 +178,12 @@ const FriendsState = props => {
         nextQuoteUpdateCounter,
         soloSelection,
         mixSelection,
+        restart,
         buttonOne: state.buttonOne,
         buttonTwo: state.buttonTwo,
         buttonThree: state.buttonThree,
-        buttonTextOne,
-        buttonTextTwo,
-        buttonTextThree,
-        allQuotesSolved
+        allQuotesSolved,
+        buttonArray: state.buttonArray
       }}
     >
       {props.children}

@@ -4,6 +4,7 @@ import {
   SOLO_SELECTION,
   MIX_ELECTION,
   NEXT_QUOTE,
+  NEXT_CHARACTER,
   NEXT_QUOTE_UPDATE_COUNTER,
   CHECK_AND_DO,
   SET_LOADING,
@@ -14,7 +15,8 @@ import {
   BUTTON_TEXT_ONE,
   BUTTON_TEXT_TWO,
   BUTTON_TEXT_THREE,
-  ALL_QUOTES_SOLVED
+  ALL_QUOTES_SOLVED,
+  FILL_BUTTONS
 } from './types';
 
 
@@ -34,6 +36,8 @@ export default (state, action) => {
           solvedAllQuotes: true
         };
 
+  
+
       case NEXT_QUOTE_UPDATE_COUNTER:
         return {
           ...state,
@@ -43,26 +47,15 @@ export default (state, action) => {
       case NEXT_QUOTE:
         return{
           ...state,
-          currentQuote: state.mixedQuotes[state.counter].quote
+          currentQuote: state.mixedQuotes[state.counter].quote,
+          currentCharacter: state.mixedQuotes[state.counter].character,    
+        };
+
+      case FILL_BUTTONS:
+        return{
+          ...state,
+          buttonArray: action.payload,
         }
-
-      case BUTTON_TEXT_ONE:
-        return {
-          ...state,
-          buttonOne: action.payload
-        };
-
-      case BUTTON_TEXT_TWO:
-        return {
-          ...state,
-          buttonTwo: action.payload
-        };
-
-      case BUTTON_TEXT_THREE:
-        return {
-          ...state,
-          buttonThree: action.payload
-        };
 
       case SET_LOADING:
         return {

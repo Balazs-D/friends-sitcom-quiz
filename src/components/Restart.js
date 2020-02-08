@@ -1,34 +1,16 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react';
+import FriendsContext from '../context/friendsContext'
 
-export default class Restart extends Component {
+const Restart = () =>  {
 
-    constructor(props){
-        super(props);
-        this.state={
-          restarted: false,
-        };
-
-    }
-
-  remixRestart= async ()=>{
-    await this.props.getMixedQuotes();
-
-    await this.props.restartGame();
-  }
-
-
-
-// if restarted: false = show button
-// else (restarted= true) ???
-
-    render() {
-
-      const {remixRestart } = this.state
-
+const friendsContext = useContext(FriendsContext);
         return (
           <div>
-            <button className='navbtn' onClick={remixRestart}>Restart</button>
+            <button className='navbtn' onClick={friendsContext.restart}>
+              Restart
+            </button>
           </div>
         );
     }
-}
+
+export default Restart

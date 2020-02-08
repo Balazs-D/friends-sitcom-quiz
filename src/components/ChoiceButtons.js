@@ -53,15 +53,15 @@ const ChoiceButtons = () => {
   return (
     <div className='choice-gr'>
       <button className='choice-btn'  value='buttonOne'>
-        <p>Karol</p>
+        <p>{friendsContext.currentCharacter}</p>
       </button>
 
       <button className='choice-btn'  value='buttonTwo' onClick={friendsContext.nextQuote}>
-        <p>{friendsContext.buttonTwo}</p>
+        <p>{friendsContext.buttonArray[0]}</p>
       </button>
 
-      <button className='choice-btn' value='buttonThree' onClick={friendsContext.mixSelection}>
-        <p>{friendsContext.buttonThree}</p>
+      <button className='choice-btn' value='buttonThree' onClick={friendsContext.nextQuote}>
+        <p>{friendsContext.buttonArray[1]}</p>
       </button>
     </div>
   );

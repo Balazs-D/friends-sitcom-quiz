@@ -121,7 +121,7 @@ useEffect(() => {
         )}
         <Timer />
 
-        {friendsContext.counter === 18 ? (
+        {friendsContext.counter === 17 ? (
           <Restart />
         ) : (
           <ChoiceButtons />
