@@ -59,6 +59,8 @@ useEffect(() => {
         className='game-view mx-auto'
         // style={{ backgroundImage: this.state.backgroundImage }}
       >
+
+        
      
         {friendsContext.characterMatch === true ? (
          <Quote />

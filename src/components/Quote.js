@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import FriendsContext from '../context/friendsContext'
+import Loader from './Loader'
 
 
 
@@ -9,9 +10,8 @@ const Quote= () => {
     return (
       <div className='popup-win '>
       
-      {/* {friendsContext.mixedQuotes && friendsContext.solvedAllQuotes ?  */}
-      <p>{friendsContext.currentQuote}</p>
-       {/* : <p>You Won!!!</p>} */}
+      {friendsContext.loading ? <Loader /> : <p>{friendsContext.currentQuote}</p>}
+      
       </div>
     );
 };
