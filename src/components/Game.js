@@ -10,6 +10,14 @@ import FriendsContext from '../context/friendsContext'
 
 
 
+    this.state = {
+      
+      // counter: 0,
+      // solvedAllQuotes: false,
+      // characterMatch: true
+    };
+  }
+
 const Game = ()=> {
   const friendsContext = useContext(FriendsContext);
   

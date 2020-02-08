@@ -11,9 +11,6 @@ import PropTypes from 'prop-types'
 import FriendsState from '../context/FriendsState'
 
 import '../assets/scss/style.scss';
-import friends1 from '../assets/photos/friends1';
-import FriendsContext from '../context/friendsContext'
-
 
 
 const App = () => {
