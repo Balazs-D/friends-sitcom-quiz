@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useContext } from 'react';
 import '../assets/scss/style.scss';
 import Quote from './Quote';
 import Restart from './Restart';
@@ -6,10 +6,9 @@ import Timer from './Timer';
 import GameOver from './GameOver';
 import Loader from './Loader';
 import ChoiceButtons from './ChoiceButtons';
+import FriendsContext from '../context/friendsContext'
 
-export default class Game extends Component {
-  constructor(props) {
-    super(props);
+
 
     this.state = {
       
@@ -19,140 +18,125 @@ export default class Game extends Component {
     };
   }
 
-  async componentDidMount(){
-    await this.props.getMixedQuotes()
-    await this.setState(solvedAllQuotes => ({
-      solvedAllQuotes: true
-    }));
+const Game = ()=> {
+  const friendsContext = useContext(FriendsContext);
+  
+  
+ 
+
+useEffect(() => { 
+   function Init(){
+     friendsContext.getMixedQuotes();
+    // await setSolvedAllQuotes(true);
+    //eslint-disable-next-line
+    console.log('its alive!!!!')
   }
+ 
+}, []);
+    
+    
+  
 
-  // const randomizer = Math.floor(Math.random() * Object.keys(this.state.friendsArray).length)
 
-  printTest = e => {
-    // const mappedQuotes = this.props.mixedQuotes.map((item, index) => (
-    //           <p key={index}>{item}</p>
-    //         ))
+  
+// onClick button 
+  // const quoteCounter = e => {
 
-    //         console.group(mappedQuotes);
 
-    console.log(this.props.mixedQuotes[this.counter]);
-    console.log(e.target.id);
-  };
+  //   const resetCounter = (e) => {
+  //     setCounter(0);
+  //     setSolvedAllQuotes(true)
+  //   }
 
-  quoteCounter = e => {
-    // console.log(this.state.counter);
-    // console.log(this.props.mixedQuotes[this.counter]);
-    this.state.counter === 19
-      ? this.setState({ counter: 0, solvedAllQuotes: true })
-      : this.setState({
-          counter: this.state.counter + 1,
-          solvedAllQuotes: true,
-          characterMatch: true
-        });
-  };
+  //   const nextQuote = (e) => {
+  //     setCounter(prevState => {
+  //         return {counter: prevState.counter + 1}
+  //   });
 
-  restartGame = () => {
-    this.setState(counter => ({ counter: 0 }));
-  };
 
-  // 1. Click on button if character != then restart + button style red / else: next quote + button style green
+  //   counter === 18 ? resetCounter() : nextQuote();
+  // }};
 
-  // 1. Click on START again wil restart the game. After click alert comes up and asking if you really want to restart?
-  // 1. Bring Fetch here
-  // Point counter -> each match 100$ -> general count, top 5 will be saved with 3 letter as name
-  // 17/x counter?
-  // button component separate
+  
 
-  soloSelection = () => {
-    const soloSel = Math.floor(Math.random() * this.state.friendsArray.length);
-    return soloSel;
-  };
 
-  mixSelection = async (e) => {
-    const searchingOne = await this.soloSelection();
-    const searchingTwo = await this.soloSelection();
 
-    let btThree = this.props.mixedQuotes.character;
-    let btOne = this.state.friendsArray[searchingOne];
-    let btTwo = this.state.friendsArray[searchingTwo];
+  // const soloSelection = () => {
+  //   const soloSel = Math.floor(Math.random() * friendsArray.length);
+  //   return soloSel;
+  // };
 
-    do {
-      const searchingOne = await this.soloSelection();
-      const searchingTwo = await this.soloSelection();
-      btOne = this.state.friendsArray[searchingOne];
-      btTwo = this.state.friendsArray[searchingTwo];
-    } while (btTwo === btThree || btTwo === btOne || btOne === btThree);
+  // const mixSelection = async (e) => {
+  //   const searchingOne = await soloSelection();
+  //   const searchingTwo = await soloSelection();
 
-    await this.setState({
-      buttonOne: btOne,
-      buttonTwo: btTwo,
-      buttonThree: btThree
-    });
+  //   let btThree = mixedQuotes.character;
+  //   let btOne = friendsArray[searchingOne];
+  //   let btTwo = friendsArray[searchingTwo];
 
-    console.log(btOne, btTwo, btThree, searchingOne, searchingTwo);
-  };
+  //   do {
+  //     const searchingOne = await soloSelection();
+  //     const searchingTwo = await soloSelection();
+  //     btOne = friendsArray[searchingOne];
+  //     btTwo = friendsArray[searchingTwo];
+  //   } while (btTwo === btThree || btTwo === btOne || btOne === btThree);
 
-  nextQuote = async e => {
-        await this.mixSelection();
+  //   await setState(prevState => ({
+  //     ...prevState,
+  //     buttonOne: btOne,
+  //     buttonTwo: btTwo,
+  //     buttonThree: btThree
+  //   }));
 
-    await this.props.quoteCounter();
+  //   console.log(btOne, btTwo, btThree, searchingOne, searchingTwo);
+  // };
+
+  // const nextQuote = async e => {
+  //       await mixSelection();
+
+  //   await quoteCounter();
    
     
-  };
+  // // };
 
-  checkAndDo = async e => {
-    this.props.mixedQuotes.character === e.target.value
-      ? this.nextQuote()
-      : this.setState(characterMatch => ({ characterMatch: false }));
+  // const checkAndDo = async e => {
+  //   mixedQuotes.character === e.target.value
+  //     ? nextQuote()
+  //     : setCharacterMatch(false);
 
-    console.log(e.target.value);
-  };
+  //   console.log(e.target.value);
+  // };
 
 
 
-  render() {
-    const { quotes, mixedQuotes } = this.props;
-    const {
-      counter,
-      solvedAllQuotes,
-      printTest
-    } = this.state;
+  
+    // const { quotes, mixedQuotes } = this.props;
+    // const {
+    //   counter,
+    //   solvedAllQuotes,
+    //   printTest
+    // } = this.state;
 
     return (
       <div
         className='game-view mx-auto'
         // style={{ backgroundImage: this.state.backgroundImage }}
       >
-        {this.state.characterMatch === true ? (
-          <Quote
-            quotes={quotes}
-            counter={counter}
-            mixedQuotes={mixedQuotes[counter]}
-            quoteCounter={this.quoteCounter}
-            solvedAllQuotes={solvedAllQuotes}
-          />
+        {friendsContext.characterMatch === true ? (
+          <Quote />
         ) : (
           <GameOver />
         )}
         <Timer />
 
-        {this.state.counter === 18 ? (
-          <Restart
-            getMixedQuotes={this.props.getMixedQuotes}
-            quoteCounter={this.quoteCounter}
-            counter={counter}
-            solvedAllQuotes={solvedAllQuotes}
-            restartGame={this.restartGame}
-          />
+        {friendsContext.counter === 17 ? (
+          <Restart />
         ) : (
-          <ChoiceButtons
-            printTest={printTest}
-            quoteCounter={this.quoteCounter}
-            mixedQuotes={this.props.mixedQuotes[counter]}
-            getMixedQuotes={this.props.getMixedQuotes}
-          />
+          <ChoiceButtons />
         )}
       </div>
     );
-  }
+  
 }
+
+export default Game;

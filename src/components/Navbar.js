@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import friends2 from '../assets/photos/friends2';
 import friends1 from '../assets/photos/friends1';
 import Title from './Title';
+import FriendsContext from '../context/friendsContext'
 
-export default class Navbar extends Component {
+const Navbar = () => {
+
+  const friendsContext = useContext(FriendsContext);
+  
 
 
-  render() {
-
-
-      const { getMixedQuotes } = this.props;
 
     return (
       <ul className='nav_bar mx-auto'>
@@ -22,7 +22,7 @@ export default class Navbar extends Component {
         </li>
 
         <li className='navbtn'>
-          <NavLink className='a-link' to='/game' onClick={getMixedQuotes} >
+          <NavLink className='a-link' to='/game' onClick={friendsContext.getMixedQuotes} >
             Start
           </NavLink>
         </li>
@@ -35,4 +35,5 @@ export default class Navbar extends Component {
       </ul>
     );
   }
-}
+
+export default Navbar

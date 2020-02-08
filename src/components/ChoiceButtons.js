@@ -1,100 +1,70 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import FriendsContext from '../context/friendsContext';
 
-export default class ChoiceButtons extends Component {
-  constructor(props) {
-    super(props);
+// const friendsArray = ['Chandler', 'Rachel', 'Phoebe', 'Monica', 'Ross', 'Joey'];
 
-    this.state = {
-      friendsArray: ['Chandler', 'Rachel', 'Phoebe', 'Monica', 'Ross', 'Joey'],
-      selectionArray: [],
-      buttonOne: '',
-      buttonTwo: '',
-      buttonThree: '',
-      character: '',
-      characterMatch: true,
-      buttonValue: ''
-    };
-  }
+const ChoiceButtons = () => {
+  const friendsContext = useContext(FriendsContext);
 
-  componentDidMount() {
-    this.nextQuote();
-  }
+  // useEffect(() => {
+  //   nextQuote();
+  // }, []);
 
+  // const soloSelection = () => {
+  //   const soloSel = Math.floor(Math.random() * friendsArray.length);
+  //   return soloSel;
+  // };
 
+  // const mixSelection = async (e) => {
+  //   let searchingOne = await soloSelection();
+  //   let searchingTwo = await soloSelection();
 
-  soloSelection = () => {
-    const soloSel = Math.floor(Math.random() * this.state.friendsArray.length);
-    return soloSel;
-  };
+  //   let btThree = friendsContext.mixedQuotes.character;
+  //   let btOne = friendsArray[searchingOne];
+  //   let btTwo = friendsArray[searchingTwo];
 
-  mixSelection = async (e) => {
-    let searchingOne = await this.soloSelection();
-    let searchingTwo = await this.soloSelection();
+  //   do {
+  //     let searchingOne = await soloSelection();
+  //     let searchingTwo = await soloSelection();
+  //     btOne = friendsArray[searchingOne];
+  //     btTwo = friendsArray[searchingTwo];
+  //   } while (btTwo === btThree || btTwo === btOne || btOne === btThree);
 
-    let btThree = this.props.mixedQuotes.character;
-    let btOne = this.state.friendsArray[searchingOne];
-    let btTwo = this.state.friendsArray[searchingTwo];
+  //   await setButtonOne(btOne);
+  //   await setButtonTwo(btTwo);
+  //   await setButtonThree(btThree);
 
-    do {
-      let searchingOne = await this.soloSelection();
-      let searchingTwo = await this.soloSelection();
-      btOne = this.state.friendsArray[searchingOne];
-      btTwo = this.state.friendsArray[searchingTwo];
-    } while (btTwo === btThree || btTwo === btOne || btOne === btThree);
+  //   console.log(btOne, btTwo, btThree, searchingOne, searchingTwo);
+  // };
 
-    await this.setState({
-      buttonOne: btOne,
-      buttonTwo: btTwo,
-      buttonThree: btThree
-    });
+  // const nextQuote = async e => {
+  //   await friendsContext.mixSelection();
+  //   await friendsContext.quoteCounter();
+  // };
 
-    console.log(btOne, btTwo, btThree, searchingOne, searchingTwo);
-  };
+  // const checkAndDo = async e => {
+  //   friendsContext.mixedQuotes.character === e.target.value
+  //     ? nextQuote()
+  //     : setCharacterMatch(false);
 
-  nextQuote = async e => {
-        await this.mixSelection();
+  //   console.log(e.target.value);
+  // };
 
-    await this.props.quoteCounter();
-   
-    
-  };
+  return (
+    <div className='choice-gr'>
+      <button className='choice-btn'  value='buttonOne'>
+        <p>{friendsContext.currentCharacter}</p>
+      </button>
 
-  checkAndDo = async e => {
-    this.props.mixedQuotes.character === e.target.value
-      ? this.nextQuote()
-      : this.setState(characterMatch => ({ characterMatch: false }));
+      <button className='choice-btn'  value='buttonTwo' onClick={friendsContext.nextQuote}>
+        <p>{friendsContext.buttonArray[0]}</p>
+      </button>
 
-    console.log(e.target.value);
-  };
+      <button className='choice-btn' value='buttonThree' onClick={friendsContext.nextQuote}>
+        <p>{friendsContext.buttonArray[1]}</p>
+      </button>
+    </div>
+  );
+};
 
-  render() {
-    const { buttonOne, buttonTwo, buttonThree, value } = this.state;
-    return (
-      <div className='choice-gr'>
-        <button
-          className='choice-btn'
-          onClick={this.checkAndDo}
-          value={buttonOne}
-        >
-          <p>{buttonOne}</p>
-        </button>
-
-        <button
-          className='choice-btn'
-          onClick={this.checkAndDo}
-          value={buttonTwo}
-        >
-          <p>{buttonTwo}</p>
-        </button>
-
-        <button
-          className='choice-btn'
-          value={buttonThree}
-          onClick={this.checkAndDo}
-        >
-          <p>{buttonThree}</p>
-        </button>
-      </div>
-    );
-  }
-}
+export default ChoiceButtons;
