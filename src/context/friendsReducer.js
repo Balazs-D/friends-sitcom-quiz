@@ -16,7 +16,8 @@ import {
   BUTTON_TEXT_TWO,
   BUTTON_TEXT_THREE,
   ALL_QUOTES_SOLVED,
-  FILL_BUTTONS
+  FILL_BUTTONS,
+  HANDLE_WRONG_ANSWER
 } from './types';
 
 
@@ -26,7 +27,8 @@ export default (state, action) => {
         return {
           ...state,
           mixedQuotes: action.payload,
-          loading: false
+          loading: false,
+          characterMatch: true,
         };
 
       case RESET_COUNTER:
@@ -68,7 +70,16 @@ export default (state, action) => {
           return{
               ...state,
               solvedAllQuotes: true
-          }
+          };
+
+       case HANDLE_WRONG_ANSWER:
+         return{
+           ...state,
+           characterMatch: false,
+           counter: 17
+         }
+
+      
 
       default:
         return state;

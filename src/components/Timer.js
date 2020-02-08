@@ -1,14 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default function Timer() {
-
-
-
-
-
-
-  
-
+const Timer = () => {
 
   return (
     <div className='height-change'>
@@ -18,3 +10,5 @@ export default function Timer() {
     
   );
 }
+
+export default Timer

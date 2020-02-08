@@ -1,9 +1,12 @@
 import React from 'react'
 
-export default function GameOver() {
+const GameOver = () => {
     return (
-        <div>
-            <p>Yo loooooooooser!</p>
+        <div className='popup-win you-lose-window'>
+           
+            <p>F A I L</p>
+           
         </div>
     )
 }
+export default GameOver

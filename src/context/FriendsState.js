@@ -21,6 +21,7 @@ import {
   NEXT_QUOTE_UPDATE_COUNTER,
   NEXT_CHARACTER,
   FILL_BUTTONS,
+  HANDLE_WRONG_ANSWER,
 } from './types';
 import friendsContext from './friendsContext';
 
@@ -135,6 +136,14 @@ const FriendsState = props => {
 
   //   CHECK_AND_DO;
 
+  const checkAndDo = async e => {
+  state.currentCharacter === e.target.value
+      ? nextQuote()
+      : handleWrongAnswer()
+
+    console.log(e.target.value);
+  };
+
   //   ALL_QUOTES_SOLVED
   const allQuotesSolved = () => ({ type: ALL_QUOTES_SOLVED });
 
@@ -143,6 +152,9 @@ const FriendsState = props => {
 
   // RESET_COUNTER
   const resetCounter = () => dispatch({ type: RESET_COUNTER });
+
+  // HANDLE_WRONG_ANSWER 
+  const handleWrongAnswer = () => dispatch({ type: HANDLE_WRONG_ANSWER })
 
   // NEXT_QUOTE_UPDATE_COUNTER
   const nextQuoteUpdateCounter = () => {
@@ -179,6 +191,8 @@ const FriendsState = props => {
         soloSelection,
         mixSelection,
         restart,
+        handleWrongAnswer,
+        checkAndDo,
         buttonOne: state.buttonOne,
         buttonTwo: state.buttonTwo,
         buttonThree: state.buttonThree,

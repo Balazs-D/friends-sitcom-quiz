@@ -50,18 +50,32 @@ const ChoiceButtons = () => {
   //   console.log(e.target.value);
   // };
 
+const valOne = friendsContext.currentCharacter;
+const valTwo = friendsContext.buttonArray[0];
+const valThree = friendsContext.buttonArray[1];
+
   return (
     <div className='choice-gr'>
-      <button className='choice-btn'  value='buttonOne'>
-        <p>{friendsContext.currentCharacter}</p>
+      <button className='choice-btn' 
+        value={valOne} 
+        onClick={friendsContext.checkAndDo}>
+        <p>{valOne}</p>
       </button>
 
-      <button className='choice-btn'  value='buttonTwo' onClick={friendsContext.nextQuote}>
-        <p>{friendsContext.buttonArray[0]}</p>
+      <button
+        className='choice-btn'
+        value={valTwo}
+        onClick={friendsContext.checkAndDo}
+      >
+        <p>{valTwo}</p>
       </button>
 
-      <button className='choice-btn' value='buttonThree' onClick={friendsContext.nextQuote}>
-        <p>{friendsContext.buttonArray[1]}</p>
+      <button
+        className='choice-btn'
+        value={valThree}
+        onClick={friendsContext.checkAndDo}
+      >
+        <p>{valThree}</p>
       </button>
     </div>
   );

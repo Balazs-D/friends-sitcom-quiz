@@ -104,6 +104,11 @@ ul {
  
 }
 
+@font-face {
+  font-family: 'FontWarning';
+  src: url('../../font/BADABB__.TTF')
+}
+
 .title {
   color: red;
   font-family: 'CustomFont';
@@ -144,8 +149,15 @@ justify-content: center;
 padding: 3vw;
 text-align: center;
 
+}
 
-
+.you-lose-window {
+  font-family: 'FontWarning';
+  font-size: 14vw;
+  text-shadow: 1vw 1vw 2vw red, 1.5vw 1.5vw 2vw yellow, 2vw 2vw 2vw blue;
+  
+  // background-clip: text;
+  // color: transparent;
 }
 
 .choice-btn {
