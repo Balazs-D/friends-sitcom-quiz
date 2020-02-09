@@ -14,12 +14,10 @@ body {
 }
 
 .fullscreen {
- 
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
-
 }
 
 .con {
@@ -36,11 +34,8 @@ body {
 
 .a-link:hover {
   text-decoration: none;
-  color: #FCC840 !important;
-
+  color: #fcc840 !important;
 }
-
-
 
 .bg {
   background-repeat: no-repeat;
@@ -48,19 +43,16 @@ body {
   background-position-y: bottom;
   background-position-x: center;
   background-attachment: fixed;
-  
-  
-  
 }
 
 .nav_bar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-width: 30vw;
+  width: 30vw;
   list-style: none;
   padding-top: 3vh;
-  opacity: .6;
+  opacity: 0.6;
   // margin: 0;
 }
 
@@ -71,29 +63,23 @@ ul {
 
 .navbtn {
   background: black;
-  border: 0.5vh solid white; 
+  border: 0.5vh solid white;
   padding: 1vh;
   margin: 1vh;
   border-radius: 4vh;
   font-family: 'CustomFont';
-  color: white; 
+  color: white;
   width: 10vw;
   text-align: center;
-  
-
 }
 
 .navbtn:hover {
-    border: 0.5vh solid #37D0FA; 
-    background: #CA342D;
-
-
+  border: 0.5vh solid #37d0fa;
+  background: #ca342d;
 }
 
-
-
 .header {
-  display: flex; 
+  display: flex;
   flex-direction: row;
 }
 
@@ -101,12 +87,11 @@ ul {
   font-family: 'CustomFont';
   src: url('../@font-face/0b7d8a39b62b28cf0cfe3cea90b8baa3.eot');
   src: url('../@font-face/0b7d8a39b62b28cf0cfe3cea90b8baa3.woff') format('woff');
- 
 }
 
 @font-face {
   font-family: 'FontWarning';
-  src: url('../../font/BADABB__.TTF')
+  src: url('../../font/BADABB__.TTF');
 }
 
 .title {
@@ -118,57 +103,65 @@ ul {
   font-size: 2rem;
   left: 0%;
   border: 2px solid red;
-  
 }
 
 .game-view {
-  
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-margin-top: 6vh;
-align-items: center;
-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 6vh;
+  align-items: center;
+  height: 80vh;
+}
 
+.steps {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.span-steps {
+  position: relative;
+  left: 0%;
 }
 
 .popup-win {
   width: 60vw;
-  height: 45vh;  
-background: black;
-opacity: 1;
-border-radius: 1vw;
-box-shadow: 0vh 0vw 0.9vw rgba($color: grey, $alpha: .5);
-color: white;
-font-family: 'CustomFont';
-font-size: 2vw;
-display: flex;
-flex-direction: column;
-align-content: center;
-justify-content: center;
-padding: 3vw;
-text-align: center;
-
+  height: 45vh;
+  background: black;
+  opacity: 1;
+  border-radius: 1vw;
+  border: 1px solid white;
+  box-shadow: 0vh 0vw 2.9vw rgba($color: black, $alpha: 0.99);
+  color: white;
+  font-family: 'CustomFont';
+  font-size: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 3vw;
+  // text-align: center;
 }
 
 .you-lose-window {
   font-family: 'FontWarning';
   font-size: 14vw;
   text-shadow: 1vw 1vw 2vw red, 1.5vw 1.5vw 2vw yellow, 2vw 2vw 2vw blue;
-  
+
   // background-clip: text;
   // color: transparent;
 }
 
 .choice-btn {
   width: 8vw;
-  height: 15vh; 
+  height: 15vh;
   background: black;
-opacity: .5;
-border-radius: 1vw;
-box-shadow: 0vh 0vw 0.01vw white;
-color: white;
-outline: none;
+  opacity: 0.5;
+  border-radius: 25vh;
+  box-shadow: 0vh 0vw 0.01vw white;
+  color: white;
+  outline: none;
 }
 
 .choice-gr {
@@ -177,41 +170,169 @@ outline: none;
   width: 30vw;
 }
 
-
-
 // TIMER
 
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 0;
 }
 
 #visual-timer {
-    background-color: #004d00;
-    width: 100vw;
-    margin: 0 50px;
-    height: 2vh;
+  background-color: #004d00;
+  width: 100vw;
+  margin: 0 50px;
+  height: 2vh;
 }
 
 .height-change {
-    /* Animation code */
-    
-    animation-name: heightChange;
-    animation-duration: 5s;
-}
+  /* Animation code */
 
+  animation-name: heightChange;
+  animation-duration: 5s;
+}
 
 /* Standard syntax */
 @keyframes heightChange {
-    0%   {width: 100vh;}
-    25%  {width: 75vh;}
-    50%  {width: 50vh;}
-    75%  {width: 25vh;}
-    100% {width: 0vh;}
+  0% {
+    width: 100vh;
+  }
+  25% {
+    width: 75vh;
+  }
+  50% {
+    width: 50vh;
+  }
+  75% {
+    width: 25vh;
+  }
+  100% {
+    width: 0vh;
+  }
 }
-
-
 
 .white-spinner {
   background: white;
 }
+
+.step-win {
+  width: 25vw;
+  height: 25vh;
+  background: black;
+  opacity: 1;
+  border-radius: 1vw;
+  border: 1px solid white;
+  box-shadow: 0vh 0vw 2.9vw rgba($color: black, $alpha: 0.99);
+  color: white;
+  font-family: 'CustomFont';
+  font-size: 1vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 3vw;
+  text-align: center;
+}
+
+.card-con {
+  display: flex;
+  justify-content: center;
+  border: 2px solid grey;
+  width: 35%;
+  height: auto;
+  align-self: center;
+  margin-bottom: 3vh;
+  margin-top: 2vw;
+  position: relative;
+  // border-radius: 25vw;
+  background: black;
+  box-shadow: 0vw 0vw 5vw 2vw black;
+  color: black;
+  background: white;
+  text-align: center;
+}
+
+.card-span {
+  border: 0.1vw solid white;
+  font-size: 1vw;
+  padding: 0.7vw;
+  border-radius: 25vw;
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+}
+
+.card-title {
+  font-size: 1.5vw;
+  padding-top: 2.5vw;
+}
+
+.card-action {
+  position: absolute;
+  // transform: translate(-50%, -50%);
+  right: 0%;
+  bottom: -8%;
+  text-shadow: 0 0 1.9vw blue;
+  padding: 0.6vw;
+  width: 15vw;
+  font-size: 1vw;
+}
+
+.card-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // background: yellow;
+  width: 70%;
+}
+
+.credit-con {
+  position: absolute;
+  width: 20%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: 49.5%;
+  top: 56%;
+  height: 27%;
+  width: 17%;
+  
+}
+
+.a, .aa {
+  color: black;
+  text-decoration: none;
+
+}
+
+.a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.aa:hover {
+ text-decoration: none;
+  color: white;}
+
+.link {
+  padding: .4vw;
+}
+
+.link:hover {
+  background: white;
+  
+}
+
+
+
+.icon {
+  color: black;
+  margin-left: 1vw;
+
+}
+
+

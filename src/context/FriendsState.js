@@ -42,6 +42,23 @@ const FriendsState = props => {
     buttonTwo: '',
     buttonThree: '',
     buttonArray: [],
+    infoArray: [
+      {
+        title: 'Its a quote quiz game to test your FRIENDS nerd level.',
+       
+        popupName: 'Whats going on?'
+      },
+      {
+        title: 'Click on START to begin the game!',
+        
+        popupName: 'Step One'
+      },
+      {
+        title: 'Select the right character!',
+     
+        popupName: 'Step Two'
+      }
+    ]
   };
 
   const [state, dispatch] = useReducer(FriendsReducer, initialState);
@@ -197,7 +214,8 @@ const FriendsState = props => {
         buttonTwo: state.buttonTwo,
         buttonThree: state.buttonThree,
         allQuotesSolved,
-        buttonArray: state.buttonArray
+        buttonArray: state.buttonArray,
+        infoArray: state.infoArray
       }}
     >
       {props.children}

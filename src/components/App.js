@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import Title from './Title';
-import Home from './Home';
+import About from './About';
 import Game from './Game';
 import Credits from './Credits';
 import Quote from './Quote';
@@ -37,7 +37,7 @@ const App = () => {
             <Switch>
               <Route exact path='/'></Route>
               <Route exact path='/about'>
-                <Home />
+                <About />
               </Route>
               <Route exact path='/game'>
                 <Game />

@@ -8,7 +8,7 @@ export default function Loader() {
           className='white-spinner'
           src={Spin}
           alt=''
-          style={{ width: '100px', margin: 'auto', display: 'block' }}
+          style={{ width: '30%', margin: 'auto', display: 'block' }}
         ></img>
       </div>
     );

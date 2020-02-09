@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import FriendsContext from '../context/friendsContext';
+import Loader from './Loader'
 
 // const friendsArray = ['Chandler', 'Rachel', 'Phoebe', 'Monica', 'Ross', 'Joey'];
 
@@ -56,10 +57,12 @@ const valThree = friendsContext.buttonArray[1];
 
   return (
     <div className='choice-gr'>
-      <button className='choice-btn' 
-        value={valOne} 
-        onClick={friendsContext.checkAndDo}>
-        <p>{valOne}</p>
+      <button
+        className='choice-btn'
+        value={valOne}
+        onClick={friendsContext.checkAndDo}
+      >
+        {friendsContext.loading ? <Loader /> : <p>{valOne}</p>}
       </button>
 
       <button
@@ -67,7 +70,7 @@ const valThree = friendsContext.buttonArray[1];
         value={valTwo}
         onClick={friendsContext.checkAndDo}
       >
-        <p>{valTwo}</p>
+        {friendsContext.loading ? <Loader /> : <p>{valTwo}</p>}
       </button>
 
       <button
@@ -75,7 +78,7 @@ const valThree = friendsContext.buttonArray[1];
         value={valThree}
         onClick={friendsContext.checkAndDo}
       >
-        <p>{valThree}</p>
+        {friendsContext.loading ? <Loader /> : <p>{valThree}</p>}
       </button>
     </div>
   );
