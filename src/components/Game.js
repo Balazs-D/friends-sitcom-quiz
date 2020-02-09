@@ -11,7 +11,6 @@ import FriendsContext from '../context/friendsContext'
 
 
 
-
 const Game = ()=> {
   const friendsContext = useContext(FriendsContext);
   
