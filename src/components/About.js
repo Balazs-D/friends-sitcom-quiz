@@ -1,32 +1,23 @@
 import React, { useContext, Fragment } from 'react';
 import FriendsContext from '../context/friendsContext';
 import friends2 from '../assets/photos/friends2';
+import fr1 from '../assets/photos/fr006.jpg';
+
 
 const About = () => {
   const friendsContext = useContext(FriendsContext);
 
   return (
     <div
-      className='popup-win mx-auto'
+      className='con mx-auto'
       style={{
         padding: '0',
-        marginTop: '2vw', 
-        backgroundColor: 'transparent',
-        border: '0px solid transparent',
-        width: '80vw',
-        height: '80vh'
+        marginTop: '2vw'
       }}
     >
+   
       {friendsContext.infoArray.map((info, index) => (
         <div className='card-con'>
-          {/* <div className='card-imgage'>
-            <img
-              // src={info.picture}
-              alt=''
-              // style={{ width: '20vw', height: '10vh' }}
-            ></img>
-          </div> */}
-
           <div className='card-layout'>
             <span className='card-span'>{info.popupName}</span>
             <h1 className='card-title'>{info.title}</h1>

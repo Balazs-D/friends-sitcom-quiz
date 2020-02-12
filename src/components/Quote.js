@@ -6,7 +6,7 @@ import Loader from './Loader'
 
 const Quote= () => {
    const friendsContext = useContext(FriendsContext);
-
+  
     return (
       <div className='popup-win '>
       

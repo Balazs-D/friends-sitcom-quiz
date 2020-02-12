@@ -18,18 +18,14 @@ import FriendsContext from '../context/friendsContext';
 const App = () => {
   const friendsContext = useContext(FriendsContext);
 
-  const [quotes, setQuotes] = useState('');
-  const [mixedQuotes, setMixedQuotes] = useState([]);
-  const [backgroundImage, setBackgroundImage] = useState(`url(${friends1})`);
-  const [quote, setQuote] = useState('');
-  const [character, setCharacter] = useState('');
-  const [loading, setLoading] = useState(false);
+  
 
   return (
     <FriendsState>
       <div
         className='fullscreen bg'
-        style={{ backgroundImage: backgroundImage }}
+        
+       
       >
         <div className='con'>
           <Router>

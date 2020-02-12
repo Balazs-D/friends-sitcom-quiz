@@ -17,8 +17,11 @@ import {
   BUTTON_TEXT_THREE,
   ALL_QUOTES_SOLVED,
   FILL_BUTTONS,
-  HANDLE_WRONG_ANSWER
+  HANDLE_WRONG_ANSWER,
+  HANDLE_START
 } from './types';
+import friends2 from '../assets/photos/friends2';
+import friends3 from '../assets/photos/friends3';
 
 
 export default (state, action) => {
@@ -77,7 +80,13 @@ export default (state, action) => {
            ...state,
            characterMatch: false,
            counter: 17
-         }
+         };
+
+       case HANDLE_START:
+         return {
+           ...state,
+           backgroundImage: `url(${friends2})`
+         };
 
       
 

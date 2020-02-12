@@ -3,6 +3,8 @@ import axios from 'axios';
 import FriendsContext from './friendsContext';
 import FriendsReducer from './friendsReducer';
 import friends1 from '../assets/photos/friends1';
+import friends2 from '../assets/photos/friends2';
+import friends3 from '../assets/photos/friends3';
 
 import {
   GET_MIXED_QUOTES,
@@ -22,8 +24,8 @@ import {
   NEXT_CHARACTER,
   FILL_BUTTONS,
   HANDLE_WRONG_ANSWER,
+  HANDLE_START
 } from './types';
-import friendsContext from './friendsContext';
 
 const FriendsState = props => {
   const initialState = {
@@ -108,9 +110,9 @@ const FriendsState = props => {
 
   //   MIX_SELECTION,
   const mixSelection = async e => {
+    const btThree = state.currentCharacter;
     let searchingOne = await soloSelection();
     let searchingTwo = await soloSelection();
-    const btThree = state.currentCharacter;
 
     let btOne = state.friendsArray[searchingOne];
     let btTwo = state.friendsArray[searchingTwo];
@@ -120,7 +122,7 @@ const FriendsState = props => {
       searchingTwo = await soloSelection();
       btOne = state.friendsArray[searchingOne];
       btTwo = state.friendsArray[searchingTwo];
-    } while (btTwo === btThree || btTwo === btOne || btOne === btThree);
+    } while (btTwo === btThree && btTwo === btOne && btOne === btThree);
   
     console.log('B1:', btOne, 'B2:', btTwo, 'B3:', state.currentCharacter, state.counter);
     
@@ -135,11 +137,12 @@ const FriendsState = props => {
   };
   //   NEXT_QUOTE,
   const nextQuote = async e => {
-    if (state.counter !== 17) {
+    if (state.counter < 17) {
       await mixSelection();
       await nextQuoteUpdateCounter();
       dispatch({ type: NEXT_QUOTE });
     } else {
+      // p: you won
       resetCounter();
     }
 
@@ -175,14 +178,25 @@ const FriendsState = props => {
 
   // NEXT_QUOTE_UPDATE_COUNTER
   const nextQuoteUpdateCounter = () => {
-    if (state.counter === 17) {
+    if (state.counter === 18) {
       resetCounter();
     } else {
       dispatch({ type: NEXT_QUOTE_UPDATE_COUNTER });
     }
   };
 
-  // BUTTON_ONE / BUTTON_TWO / BUTTON_THREE
+  // HANDLE_ABOUT
+
+  // HANDLE_START
+  const handleStart = async () => {
+    await getMixedQuotes();
+    await resetCounter();
+    await dispatch({ type: HANDLE_START, backgroundImage: `url(${friends2})` });
+    
+
+  }
+
+  // HANDLE_CREDITS
 
  
 
@@ -210,6 +224,7 @@ const FriendsState = props => {
         restart,
         handleWrongAnswer,
         checkAndDo,
+        handleStart,
         buttonOne: state.buttonOne,
         buttonTwo: state.buttonTwo,
         buttonThree: state.buttonThree,

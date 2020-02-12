@@ -15,23 +15,24 @@ const Navbar = () => {
 
     return (
       <ul className='nav_bar mx-auto'>
-        <li className='navbtn'>
-          <NavLink className='a-link' to='/about'>
-            About
-          </NavLink>
+      <h1 className='title'>Who said that?</h1>
+        <div className='button-group'><li className='navbtn'>
+        <NavLink className='a-link' to='/about'>
+        About
+        </NavLink>
         </li>
-
+        
         <li className='navbtn'>
-          <NavLink className='a-link' to='/game' onClick={friendsContext.getMixedQuotes} >
-            Start
-          </NavLink>
+        <NavLink className='a-link' to='/game' onClick={friendsContext.handleStart} >
+        Start
+        </NavLink>
         </li>
-
+        
         <li className='navbtn'>
-          <NavLink className='a-link' to='/credits'>
-            Credits
-          </NavLink>
-        </li>
+        <NavLink className='a-link' to='/credits'>
+        Credits
+        </NavLink>
+        </li></div>
       </ul>
     );
   }
